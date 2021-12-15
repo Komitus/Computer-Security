@@ -1,0 +1,9 @@
+version: "3.3"
+   
+services:
+  go-web:
+    image: bezpieka.ex3:bezpieka
+    build: . 
+    command: go run pishing_server.go
+    ports:
+      - "443:8080"

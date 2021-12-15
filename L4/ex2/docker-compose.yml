@@ -1,0 +1,11 @@
+version: "3.3"
+   
+services:
+  go-web:
+    image: bezpieka.ex2:bezpieka
+    build: . 
+    #command: go run serverHTTP.go
+    command: go run serverHTTPS.go
+    ports:
+      #- "8080:8080"
+      - "443:8080"
