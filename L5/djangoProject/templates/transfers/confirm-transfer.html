@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+<h3 style="text-align: center">Are you sure?</h3>
+    <div class="form-container">
+
+    <form id="confirm_transfer_form" action="/new_transfer/confirmed" method="POST">
+  {% csrf_token %}
+         <p> Name: <br><input type="text" value="{{transfer.recipient_name}}" name="recipient_name" readonly></p>
+         <p> Surname: <br><input type="text" value="{{transfer.recipient_surname}}" name="recipient_surname" readonly></p>
+        <p> Number: <br><input type="text" value="{{transfer.recipient_account}}" name="recipient_account" readonly></p>
+        <p> Amount: <br><input type="number" value="{{transfer.amount}}" name="amount" readonly></p>
+        <p> Title: <br><input type="text" value="{{transfer.title}}" name="title" readonly></p>
+        <button type="submit">Send</button><br>
+        <a href="/dashboard">Cancel</a>
+</form>
+
+
+
+</div>
+{% endblock %}

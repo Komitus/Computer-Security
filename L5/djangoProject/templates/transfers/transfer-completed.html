@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+    <h3 style="text-align: center">Transaction completed</h3>
+    <div class="form-container">
+
+    {% csrf_token %}
+
+         <table>
+  <tr>
+    <th>Name</th>
+      <td id="confirmed_name">{{recipient_name}}</td>
+  </tr>
+  <tr>
+    <th>Surname</th>
+      <td>{{recipient_surname}}</td>
+  </tr>
+             <tr>
+    <th>Number</th>
+      <td id="confirmed_account">{{recipient_account}}</td>
+  </tr>
+             <tr>
+    <th>Amount</th>
+      <td id="confirmed_amount">{{amount}}</td>
+  </tr>
+             <tr>
+   <th>Title</th>
+      <td>{{title}}</td>
+  </tr>
+</table>
+    </div>
+    <div style="display: flex; margin-top: 1em; justify-content: center">
+        <a href="/dashboard">OK</a>
+    </div>
+
+
+
+
+
+{% endblock %}

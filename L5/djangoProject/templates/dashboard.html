@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+
+    <div id="dashboard">
+<h3>
+  {% csrf_token %}
+  You are logged in as {{ request.user.username }} <br>
+  Account number: {{ acc_number }}
+</h3>
+<h2>Account balance: {{request.user.account.balance}} PLN</h2>
+<a href="/new_transfer">New Transfer</a>
+<h2>
+  History
+</h2>
+        <h3>
+  Outgoing
+</h3>
+<table id="outgoing-table">
+  <thead>
+    <tr>
+      <th scope="col">Recipient account number</th>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Date</th>
+      <th scope="col">Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for transfer in transfers.outgoing %}
+    <tr>
+      <td>{{ transfer.recipient_account }}</td>
+        <td>{{ transfer.recipient_name }}</td>
+        <td>{{ transfer.recipient_surname }}</td>
+      <td>{{ transfer.amount }}</td>
+      <td>{{ transfer.date }}</td>
+      <td>{{ transfer.title }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+        <h3>
+  Incoming
+</h3>
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Sender account number</th>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+      <th scope="col">Amount</th>
+        <th scope="col">Date</th>
+        <th scope="col">Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for transfer in transfers.incoming %}
+    <tr>
+      <td>{{ transfer.sender_account }}</td>
+        <td>{{ transfer.sender_name }}</td>
+        <td>{{ transfer.sender_surname }}</td>
+      <td>{{ transfer.amount }} PLN</td>
+      <td>{{ transfer.date }}</td>
+        <td>{{ transfer.title }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+
+{% endblock %}
